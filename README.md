@@ -16,3 +16,16 @@ I magine you meet a samll startup company planning to launch a new application t
  10. Securing access to the environment as the delivery team expands.
  11. An archival strategy for inactive objects greater than 6 months.
  12. Ability to easily manage and replicate multiple environments based on their blueprint architecture.
+
+# ObjectivePermalink
+Recommend a manageable, secure, scalable, high performance, efficient, elastic, highly available, fault tolerant and recoverable architecture that allows the startup to organically grow. The architecture should specifically address the requirements/concerns as described above.
+
+# AssumptionsPermalink
+The application is already built, and no significant changes need to be made to host it in AWS.
+The application is considered to be business critical for the start-up.
+The application is built using typical three-tier architecture.
+The delivery team would be connecting with the AWS environment over the internet. If private connectivity is required then additional services like VPN, AWS DirectConnect would required to be setup.
+Access to AWS account(s) will be controlled through AWS Identity and Access management (IAM), integration with external identity provider and SSO is not considered.
+There are no specific compliance requirements defined for this workload like HIPAA, PCI-DSS, FedRAMP etc.
+
+# Solution
