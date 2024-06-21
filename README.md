@@ -17,10 +17,10 @@ I magine you meet a samll startup company planning to launch a new application t
  11. An archival strategy for inactive objects greater than 6 months.
  12. Ability to easily manage and replicate multiple environments based on their blueprint architecture.
 
-# ObjectivePermalink
+# Objective
 Recommend a manageable, secure, scalable, high performance, efficient, elastic, highly available, fault tolerant and recoverable architecture that allows the startup to organically grow. The architecture should specifically address the requirements/concerns as described above.
 
-# AssumptionsPermalink
+# Assumptions
 The application is already built, and no significant changes need to be made to host it in AWS.
 The application is considered to be business critical for the start-up.
 The application is built using typical three-tier architecture.
