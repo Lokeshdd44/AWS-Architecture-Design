@@ -30,3 +30,23 @@ There are no specific compliance requirements defined for this workload like HIP
 
 # Solution
 ![image](https://github.com/Lokeshdd44/AWS-Architecture-Design/assets/99136410/af517b9b-fab9-4c4d-b452-ee840d417328)
+
+# Solution Flow
+  1. Customer/Service Provider (User) initiates real-time interaction through the client app. User is redirected to Amazon Cognito for sign-in/sign-up.
+  2. After successful authentication the client app receives the access token from Amazon Cognito.
+  3. Amazon Cognito also enables the sync of user specific data across multiple devices.
+  4. The client app communicates with the backend APIs through Amazon Route 53. Route 53 decides which region the request should be forward to based on the routing rules.
+  5. The request is forwarded to Application Load Balancer from Route 53 where it is inspected by Web Application Firewall for vulnerabilities.
+  6. If no vulnerabilities are detected Application Load Balancer sends the request to Elastic Beanstalk auto-scaling group where the request is processed by one of the application instances.
+  7. Application interacts with the Amazon Aurora database through RDS proxy and performs the request CRUD operations on the database and returns the response back to the application.
+  8. Amazon Pinpoint continuously collects usage data from application and makes it available for analysis. The data is also continuously exported to Amazon S3 since Amazon Pinpoint can only store data for 90 days. Additionally, Amazon QuickSight is used to perform advanced analytics and create interactive dashboards.
+  9. Any data older than 6 months is archived to Glacier by using S3 lifecycle management policy.
+ 10. Based on the analysis provided by Amazon Pinpoint the application can trigger push notifications to specific (or all) users.
+ 11. The developer checks-in the code changes to AWS CodeCommit, the code is scanned for credentials leak, code quality, open-source vulnerabilities etc.
+ 12. AWS CodeBuild then builds the required container image(s) and pushes the image(s) to AWS Elastic Container Registry (ECR).
+ 13. In ECR the container images are scanned for any vulnerabilities using Amazon Inspector.
+ 14. AWS CodeDeploy then pushes the new version to Elastic Beanstalk. Elastic Beanstalk pulls the latest image from ECR and initiates the deployment process.
+ 15. The delivery team accesses the AWS account using IAM credentials to perform their tasks, principle of least privileges is followed when granting access to the delivery team members.
+ 16. All services are monitored using AWS CloudWatch and AWS CloudTrail.
+ 17. AWS Cost management tools are used for creating budgets and cost alerts.
+ 18. AWS Trusted Advisor recommendations are reviewed periodically to ensure that the application remains in a Well-Architected state.
