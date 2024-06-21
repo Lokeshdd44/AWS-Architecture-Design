@@ -29,3 +29,4 @@ Access to AWS account(s) will be controlled through AWS Identity and Access mana
 There are no specific compliance requirements defined for this workload like HIPAA, PCI-DSS, FedRAMP etc.
 
 # Solution
+![image](https://github.com/Lokeshdd44/AWS-Architecture-Design/assets/99136410/af517b9b-fab9-4c4d-b452-ee840d417328)
